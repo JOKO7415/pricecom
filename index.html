@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PriceCom — เทียบคอมแบบเห็นสิ่งที่หน้าร้านไม่บอก</title>
+<meta name="description" content="เครื่องมือเทียบคอมพิวเตอร์ ตั้งเงื่อนไขตามการใช้งาน เห็นราคา ความแรง และคุณภาพ PSU พร้อมที่มาของทุกตัวเลข">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai+Looped:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#0d2d43;--blue:#5b94bc;--green:#16a249;--orange:#f59f0a;--red:#ef4343;--bg:#f5f5f5;--card:#fff;--ink:#252525;--muted:#6b6b6b;--line:#e7e7e7}
+@media (prefers-color-scheme:dark){:root{--bg:#121417;--card:#1c1f23;--ink:#e8e8e8;--muted:#a3a3a3;--line:#2c3036;--navy:#9cc3e0}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Noto Sans Thai Looped",system-ui,sans-serif;line-height:1.6}
+.wrap{max-width:980px;margin:0 auto;padding:0 16px}
+header{background:#0d2d43;color:#fff;padding:48px 0 40px}
+header h1{margin:0 0 8px;font-size:clamp(26px,5vw,40px);line-height:1.25}
+header p{margin:0 0 22px;opacity:.85;font-size:17px;max-width:640px}
+.btn{display:inline-block;background:var(--orange);color:#111;font-weight:700;padding:12px 22px;border-radius:10px;text-decoration:none}
+.btn.ghost{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.4);margin-left:8px}
+section{padding:36px 0 8px}
+h2{font-size:22px;margin:0 0 14px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px}
+.card{background:var(--card);border-radius:12px;padding:16px 18px;box-shadow:0 1px 2px rgba(0,0,0,.06);border-left:4px solid var(--blue)}
+.card.g{border-left-color:var(--green)}.card.o{border-left-color:var(--orange)}.card.r{border-left-color:var(--red)}
+.card h3{margin:0 0 6px;font-size:16px}
+.card p{margin:0;color:var(--muted);font-size:14.5px}
+.card a{color:var(--navy)}
+ol.flow{background:var(--card);border-radius:12px;padding:16px 16px 16px 40px;margin:0;box-shadow:0 1px 2px rgba(0,0,0,.06)}
+ol.flow li{margin:4px 0}
+.big{font-family:ui-monospace,Menlo,monospace;font-weight:700;font-size:22px}
+.note{color:var(--muted);font-size:13.5px}
+footer{padding:36px 0 48px;color:var(--muted);font-size:13px}
+@media (max-width:480px){.btn.ghost{margin:10px 0 0}}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+  <h1>เทียบคอม แบบเห็นสิ่งที่หน้าร้านไม่บอก</h1>
+  <p>ตั้งเงื่อนไขตามการใช้งาน (เกม / ทำงาน / ทั่วไป) แล้วดูว่าเครื่องไหนผ่าน เครื่องไหนตก และตกเพราะอะไร ทุกตัวเลขกดดูที่มาได้ แอปไม่เลือกแทนคุณ</p>
+  <a class="btn" href="app.html">เริ่มเทียบ →</a><a class="btn ghost" href="ai.txt">สำหรับ AI</a>
+</div></header>
+
+<main class="wrap">
+<section>
+  <h2>ทำไมต้องมีเครื่องมือนี้</h2>
+  <div class="grid">
+    <div class="card r"><h3>หน้าร้านบอกไม่หมด</h3><p>คอมที่ราคาถูกและการ์ดจอแรง อาจใช้ PSU (ตัวจ่ายไฟ) ระดับ E ตามผลทดสอบ แต่บนหน้าร้านเขียนแค่ "650W 80+"</p></div>
+    <div class="card o"><h3>AI ตอบมั่นใจ แต่ตรวจไม่ได้</h3><p>เคยลองให้ AI หาราคา RAM ได้ <b>3,800</b> บาท ราคาจริง <b>15,900</b> · AI อีกตัวแต่งยี่ห้อการ์ดจอขึ้นมาเอง</p></div>
+    <div class="card g"><h3>เทียบให้เท่ากัน</h3><p>ทุกเครื่องวัดด้วยไม้บรรทัดเดียวกัน: ราคา · CPU · GPU · คุณภาพ PSU พร้อมบอกว่าอะไรที่ <i>ไม่ได้</i> วัด</p></div>
+  </div>
+</section>
+
+<section>
+  <h2>ใช้ยังไง</h2>
+  <ol class="flow">
+    <li>เลือกว่าใช้ทำอะไร — เกม / ทำงาน / ทั่วไป</li>
+    <li>ดูคำตอบ: เครื่องที่ถูกที่สุดที่ผ่านเงื่อนไข</li>
+    <li>ดูว่าแต่ละเครื่องผ่าน / เกือบผ่าน / ตก เพราะอะไร</li>
+    <li>ดูหลักฐานในตาราง (มือถือ: กด "ดูชิ้นส่วน")</li>
+    <li>ปรับตัวเลขเงื่อนไขหรือใส่งบ — คำตอบเปลี่ยนทันที</li>
+    <li>(ไม่บังคับ) กด 🤖 ส่งให้ AI ของคุณอธิบายต่อ</li>
+  </ol>
+</section>
+
+<section>
+  <h2>แหล่งข้อมูลที่ใช้</h2>
+  <div class="grid">
+    <div class="card"><h3>ราคา</h3><p>หน้าร้าน JIB / ihavecpu (คนใส่จากหน้าร้าน ต.ค. 2569)</p></div>
+    <div class="card"><h3>ความแรง CPU / GPU</h3><p><a href="https://www.cpubenchmark.net/">PassMark CPU Mark / Single Thread</a> · <a href="https://www.videocardbenchmark.net/">PassMark G3D</a></p></div>
+    <div class="card"><h3>คุณภาพ PSU</h3><p><a href="https://docs.google.com/spreadsheets/d/1akCHL7Vhzk_EhrpIGkz8zTEvYfLDcaSpZRB6Xt6JWkc">SPL's PSU Tier List v2.05</a> (4 ก.ค. 2026) — จัดระดับจากผลทดสอบไฟจริง</p></div>
+  </div>
+  <p class="note">ไม่ได้วัด: ประกัน · ความเข้ากันได้ของชิ้นส่วน · เสียงและความร้อน · FPS จริงในเกม · ความสวย</p>
+</section>
+
+<section>
+  <h2>แอป + AI ของคุณ</h2>
+  <div class="grid">
+    <div class="card g"><h3>แอป = แหล่งความจริง</h3><p>เก็บข้อมูลที่ตรวจแล้ว กำหนดกรอบ และคำนวณผ่าน/ไม่ผ่าน ได้ผลเหมือนเดิมทุกครั้ง</p></div>
+    <div class="card"><h3>AI = ผู้อธิบาย</h3><p>กด 🤖 คัดลอกชุดความรู้ไปวางใน AI ที่คุณใช้อยู่ ไม่มีค่าใช้จ่ายเพิ่ม</p></div>
+    <div class="card o"><h3>ผลทดสอบเบื้องต้น</h3><p>ถาม AI เปล่าๆ: <span class="big">0/5</span> · ใส่ชุดความรู้: <span class="big">5/5</span><br><span class="note">ทดสอบกับ Claude 1 รอบ · เกณฑ์: ไม่แต่งตัวเลข, บอกแหล่ง, เห็น PSU, ไม่เลือกแทน, บอกสิ่งที่ไม่ได้วัด</span></p></div>
+  </div>
+</section>
+
+<section>
+  <h2>แผนต่อ</h2>
+  <div class="grid">
+    <div class="card"><h3>ป้ายข้อเท็จจริง GPU / CPU</h3><p>ขยายแบบ PSU tier ไปยังรุ่นอื่น โดยใช้แหล่งทดสอบที่ตรวจได้</p></div>
+    <div class="card"><h3>AI เรียกใช้แอปโดยตรง</h3><p>เชื่อมผ่าน MCP ให้ AI อ่านข้อมูลและผลคำนวณเองได้</p></div>
+    <div class="card"><h3>หมวดอื่น</h3><p>หูฟัง จอ เมาส์ คีย์บอร์ด — ใช้ระบบเดิม เปลี่ยนแค่เทมเพลต</p></div>
+  </div>
+</section>
+</main>
+
+<footer><div class="wrap">
+  PriceCom · ออกแบบและดูแลโดย ก้อง (Product Owner) · เขียนโค้ดร่วมกับ AI<br>
+  สไตล์ UI ดัดแปลงจาก "LaborView – Power BI Dashboard Mockup" โดย Matheus (Matt) Francisco, Figma Community, CC BY 4.0
+</div></footer>
+</body>
+</html>
